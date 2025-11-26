@@ -531,10 +531,8 @@
 
         <section class="roles-section">
             <div class="role-card tomb-raider-card">
-                <!-- Replace with your Tomb Raider image -->
                 <div class="role-image tomb-raider-image">
                     <i class="fas fa-helmet-battle"></i>
-                    <img src="tomb_raider_character.jpg" alt="Tomb Raider Character" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                 </div>
                 <h2 class="role-title">Tomb Raiders</h2>
                 <p class="role-description">
@@ -548,10 +546,8 @@
             </div>
             
             <div class="role-card undertaker-card">
-                <!-- Replace with your Undertaker image -->
                 <div class="role-image undertaker-image">
                     <i class="fas fa-coffin"></i>
-                    <img src="undertaker_character.jpg" alt="Undertaker Character" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                 </div>
                 <h2 class="role-title">Undertakers</h2>
                 <p class="role-description">
@@ -754,7 +750,6 @@
             
             <form id="waitlist-form" action="https://formspree.io/f/mldkoebk" method="POST">
                 <input type="hidden" name="_subject" value="New SaaS Graveyard Waitlist Signup">
-                <input type="hidden" name="_replyto" value="%email%">
                 
                 <div class="form-group">
                     <label class="form-label" for="email">Email Address</label>
@@ -857,13 +852,23 @@
             });
         });
         
-        // Form submission - WAITLIST FORM
+        // Form submission - WAITLIST FORM (FIXED VERSION)
         const waitlistForm = document.getElementById('waitlist-form');
         const successMessage = document.getElementById('success-message');
         
         waitlistForm.addEventListener('submit', function(e) {
             e.preventDefault();
             console.log('🚀 Waitlist form submitted');
+            
+            // Get the email value for validation
+            const emailInput = this.querySelector('#email');
+            const email = emailInput.value;
+            
+            // Basic email validation
+            if (!email || !email.includes('@')) {
+                alert('Please enter a valid email address');
+                return;
+            }
             
             // Show loading state
             const submitBtn = this.querySelector('.form-submit');
@@ -880,16 +885,27 @@
                 }
             })
             .then(response => {
-                console.log('✅ Form submitted successfully');
+                console.log('✅ Waitlist form submitted successfully');
                 console.log('Response status:', response.status);
                 
-                // Hide form and show success message
-                waitlistForm.style.display = 'none';
-                successMessage.style.display = 'block';
+                if (response.ok) {
+                    // Hide form and show success message
+                    waitlistForm.style.display = 'none';
+                    successMessage.style.display = 'block';
+                    
+                    // Reset form for potential re-use
+                    waitlistForm.reset();
+                    
+                    // Re-enable button (though form is hidden)
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                } else {
+                    throw new Error('Form submission failed');
+                }
             })
             .catch(error => {
-                console.error('❌ Form submission failed:', error);
-                alert('Form submission failed. Please try again.');
+                console.error('❌ Waitlist form submission failed:', error);
+                alert('Form submission failed. Please try again or contact us directly.');
                 
                 // Reset button
                 submitBtn.textContent = originalText;
