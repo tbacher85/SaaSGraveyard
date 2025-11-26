@@ -818,7 +818,7 @@
             <p style="margin-bottom: 1.5rem; color: var(--color-gray);">Interested in bringing this project back to life? Tell us about your resurrection plan.</p>
             <form id="resurrect-form" action="https://formspree.io/f/mldkoebk" method="POST">
                 <input type="hidden" name="_subject" value="Resurrection Inquiry - %project%">
-                <input type="hidden" name="_replyto" value="%email%">
+                <input type="hidden" name="_replyto" id="resurrect-replyto" value="">
                 <input type="hidden" id="resurrect-project" name="project" value="">
                 
                 <div class="form-group">
@@ -857,19 +857,44 @@
             });
         });
         
-        // Form submission
+        // Form submission - WAITLIST FORM
         const waitlistForm = document.getElementById('waitlist-form');
         const successMessage = document.getElementById('success-message');
         
         waitlistForm.addEventListener('submit', function(e) {
             e.preventDefault();
+            console.log('🚀 Waitlist form submitted');
             
-            // In a real implementation, you would submit to Formspree here
-            // For demo purposes, we'll just show the success message
+            // Show loading state
+            const submitBtn = this.querySelector('.form-submit');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Submitting...';
+            submitBtn.disabled = true;
             
-            // Hide form and show success message
-            waitlistForm.style.display = 'none';
-            successMessage.style.display = 'block';
+            // Submit to Formspree
+            fetch(this.action, {
+                method: 'POST',
+                body: new FormData(this),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                console.log('✅ Form submitted successfully');
+                console.log('Response status:', response.status);
+                
+                // Hide form and show success message
+                waitlistForm.style.display = 'none';
+                successMessage.style.display = 'block';
+            })
+            .catch(error => {
+                console.error('❌ Form submission failed:', error);
+                alert('Form submission failed. Please try again.');
+                
+                // Reset button
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            });
         });
         
         // Resurrection button functionality
@@ -877,6 +902,7 @@
         const resurrectModal = document.getElementById('resurrect-modal');
         const closeModal = document.querySelector('.close-modal');
         const resurrectProject = document.getElementById('resurrect-project');
+        const resurrectReplyTo = document.getElementById('resurrect-replyto');
         
         resurrectButtons.forEach(button => {
             button.addEventListener('click', function() {
@@ -902,13 +928,46 @@
             }
         });
         
-        // Resurrection form submission
+        // Form submission - RESURRECTION FORM  
         const resurrectForm = document.getElementById('resurrect-form');
         resurrectForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Resurrection request submitted! We\'ll contact you soon to discuss bringing this project back to life.');
-            resurrectModal.style.display = 'none';
-            this.reset();
+            console.log('🚀 Resurrection form submitted');
+            
+            // Update reply-to with the email from the form
+            const emailInput = this.querySelector('input[type="email"]');
+            resurrectReplyTo.value = emailInput.value;
+            
+            // Show loading state
+            const submitBtn = this.querySelector('.form-submit');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Submitting...';
+            submitBtn.disabled = true;
+            
+            // Submit to Formspree
+            fetch(this.action, {
+                method: 'POST',
+                body: new FormData(this),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                console.log('✅ Resurrection form submitted successfully');
+                console.log('Response status:', response.status);
+                
+                alert('Resurrection request submitted! We\'ll contact you soon to discuss bringing this project back to life.');
+                resurrectModal.style.display = 'none';
+                this.reset();
+            })
+            .catch(error => {
+                console.error('❌ Resurrection form submission failed:', error);
+                alert('Form submission failed. Please try again.');
+                
+                // Reset button
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            });
         });
     </script>
 </body>
