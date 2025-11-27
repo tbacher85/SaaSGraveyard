@@ -270,12 +270,34 @@
         }
         
         /* Cemetery Map */
-		.cemetery-map {
-			background: linear-gradient(rgba(26, 26, 46, 0.85), rgba(26, 26, 46, 0.9)), url('https://raw.githubusercontent.com/tbacher85/SaaSGraveyard/main/graveyard_bg.jpg');
-			background-size: cover;
-			background-position: center;
-		/* ... your other styles ... */
-		}
+        .cemetery-map {
+            position: relative;
+            min-height: 600px;
+            background: 
+                linear-gradient(rgba(26, 26, 46, 0.85), rgba(26, 26, 46, 0.9)),
+                /* Pixel art grass pattern */
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 20px,
+                    rgba(30, 60, 30, 0.1) 20px,
+                    rgba(30, 60, 30, 0.1) 40px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 20px,
+                    rgba(40, 70, 40, 0.1) 20px,
+                    rgba(40, 70, 40, 0.1) 40px
+                ),
+                /* Base grass colors */
+                linear-gradient(135deg, #1a3a1a 0%, #2a5a2a 100%);
+            border-radius: 15px;
+            margin: 3rem 0;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
         
         .tombstone {
             position: absolute;
@@ -779,7 +801,6 @@
             <div class="role-card tomb-raider-card">
                 <div class="role-image tomb-raider-image">
                     <i class="fas fa-helmet-battle"></i>
-					<img src="tomb_raider_character.jpg" alt="Tomb Raider Character" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                 </div>
                 <h2 class="role-title">Tomb Raiders</h2>
                 <p class="role-description">
@@ -819,7 +840,6 @@
             <div class="role-card undertaker-card">
                 <div class="role-image undertaker-image">
                     <i class="fas fa-coffin"></i>
-					<img src="undertaker_character.jpg" alt="Undertaker Character" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                 </div>
                 <h2 class="role-title">Undertakers</h2>
                 <p class="role-description">
@@ -863,58 +883,32 @@
         </p>
 
         <!-- Cemetery Map with Pixel Art Background -->
- <!-- Updated Cemetery Map with adjusted positions -->
-		<div class="cemetery-map" id="cemetery-map">
-    <div class="tombstone cheap" style="top: 25%; left: 20%;" data-project="GhostWriter AI">
-        <div class="tombstone-icon">🪦</div>
-        <div class="tombstone-label">GhostWriter AI</div>
-    </div>
-    <div class="tombstone mid" style="top: 65%; left: 75%;" data-project="Crypto Phoenix">
-        <div class="tombstone-icon">🪦</div>
-        <div class="tombstone-label">Crypto Phoenix</div>
-    </div>
-    <div class="tombstone cheap" style="top: 45%; left: 85%;" data-project="Viral Undertaker">
-        <div class="tombstone-icon">🪦</div>
-        <div class="tombstone-label">Viral Undertaker</div>
-    </div>
-    <div class="tombstone mid" style="top: 75%; left: 35%;" data-project="Dating Ghost">
-        <div class="tombstone-icon">🪦</div>
-        <div class="tombstone-label">Dating Ghost</div>
-    </div>
-    <div class="tombstone cheap" style="top: 35%; left: 55%;" data-project="Zombie Sales">
-        <div class="tombstone-icon">🪦</div>
-        <div class="tombstone-label">Zombie Sales</div>
-    </div>
-    <div class="tombstone mid" style="top: 55%; left: 45%;" data-project="Phantom Teams">
-        <div class="tombstone-icon">🪦</div>
-        <div class="tombstone-label">Phantom Teams</div>
-    </div>
-</div>
-					<div class="tombstone cheap" style="top: 20%; left: 15%;" data-project="GhostWriter AI">
-						<div class="tombstone-icon">🪦</div>
-						<div class="tombstone-label">GhostWriter AI</div>
-					</div>
-					<div class="tombstone mid" style="top: 60%; left: 70%;" data-project="Crypto Phoenix">
-						<div class="tombstone-icon">🪦</div>
-						<div class="tombstone-label">Crypto Phoenix</div>
-					</div>
-					<div class="tombstone cheap" style="top: 40%; left: 80%;" data-project="Viral Undertaker">
-						<div class="tombstone-icon">🪦</div>
-						<div class="tombstone-label">Viral Undertaker</div>
-					</div>
-					<div class="tombstone mid" style="top: 70%; left: 30%;" data-project="Dating Ghost">
-					<div class="tombstone-icon">🪦</div>
-						<div class="tombstone-label">Dating Ghost</div>
-					</div>
-					<div class="tombstone cheap" style="top: 30%; left: 50%;" data-project="Zombie Sales">
-						<div class="tombstone-icon">🪦</div>
-						<div class="tombstone-label">Zombie Sales</div>
-					</div>
-					<div class="tombstone mid" style="top: 50%; left: 40%;" data-project="Phantom Teams">
-						<div class="tombstone-icon">🪦</div>
-						<div class="tombstone-label">Phantom Teams</div>
-					</div>
-				</div>
+        <div class="cemetery-map" id="cemetery-map">
+            <div class="tombstone cheap" style="top: 20%; left: 15%;" data-project="GhostWriter AI">
+                <div class="tombstone-icon">🪦</div>
+                <div class="tombstone-label">GhostWriter AI</div>
+            </div>
+            <div class="tombstone mid" style="top: 60%; left: 70%;" data-project="Crypto Phoenix">
+                <div class="tombstone-icon">🪦</div>
+                <div class="tombstone-label">Crypto Phoenix</div>
+            </div>
+            <div class="tombstone cheap" style="top: 40%; left: 80%;" data-project="Viral Undertaker">
+                <div class="tombstone-icon">🪦</div>
+                <div class="tombstone-label">Viral Undertaker</div>
+            </div>
+            <div class="tombstone mid" style="top: 70%; left: 30%;" data-project="Dating Ghost">
+                <div class="tombstone-icon">🪦</div>
+                <div class="tombstone-label">Dating Ghost</div>
+            </div>
+            <div class="tombstone cheap" style="top: 30%; left: 50%;" data-project="Zombie Sales">
+                <div class="tombstone-icon">🪦</div>
+                <div class="tombstone-label">Zombie Sales</div>
+            </div>
+            <div class="tombstone mid" style="top: 50%; left: 40%;" data-project="Phantom Teams">
+                <div class="tombstone-icon">🪦</div>
+                <div class="tombstone-label">Phantom Teams</div>
+            </div>
+        </div>
 
         <!-- Achievement Badges -->
         <div class="achievements">
