@@ -98,6 +98,74 @@
             border: 1px solid var(--color-accent);
         }
         
+        /* Social Proof Section */
+        .social-proof {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: rgba(76, 201, 164, 0.1);
+            border-radius: 15px;
+            border: 1px solid var(--color-tomb-raider);
+        }
+        
+        .proof-items {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .proof-item {
+            text-align: center;
+        }
+        
+        .proof-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--color-tomb-raider);
+        }
+        
+        .proof-label {
+            color: var(--color-gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            margin: 4rem 0;
+        }
+        
+        .testimonial-card {
+            background: var(--color-grave);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--color-tomb-raider);
+        }
+        
+        .testimonial-card.undertaker {
+            border-left-color: var(--color-undertaker);
+        }
+        
+        .testimonial-icon {
+            color: var(--color-tomb-raider);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-icon.undertaker {
+            color: var(--color-undertaker);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+        }
+        
+        /* Roles Section */
         .roles-section {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -174,6 +242,104 @@
             gap: 0.5rem;
         }
         
+        /* Tools Section */
+        .tools-section {
+            margin: 3rem 0;
+            text-align: center;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .tool-card {
+            padding: 1.5rem;
+            border: 2px solid var(--color-tomb-raider);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .tool-card.undertaker {
+            border-color: var(--color-undertaker);
+        }
+        
+        .tool-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .tool-card h3 {
+            color: var(--color-tomb-raider);
+            margin-bottom: 0.5rem;
+        }
+        
+        .tool-card.undertaker h3 {
+            color: var(--color-undertaker);
+        }
+        
+        .tool-description {
+            color: var(--color-gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Cemetery Map */
+        .cemetery-map {
+            position: relative;
+            min-height: 600px;
+            background: linear-gradient(rgba(26, 26, 46, 0.9), rgba(26, 26, 46, 0.9)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="%232a2a3e" width="100" height="100"/><circle fill="%231a1a2e" cx="20" cy="20" r="2"/><circle fill="%231a1a2e" cx="60" cy="40" r="3"/></svg>');
+            border-radius: 15px;
+            margin: 3rem 0;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .tombstone {
+            position: absolute;
+            cursor: pointer;
+            transition: transform 0.3s;
+            text-align: center;
+        }
+        
+        .tombstone:hover {
+            transform: scale(1.1);
+        }
+        
+        .tombstone-icon {
+            font-size: 3rem;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+        }
+        
+        .tombstone-label {
+            background: rgba(0,0,0,0.7);
+            padding: 0.5rem;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+            white-space: nowrap;
+        }
+        
+        .tombstone.cheap {
+            color: var(--color-success);
+        }
+        
+        .tombstone.mid {
+            color: var(--color-warning);
+        }
+        
+        .tombstone.expensive {
+            color: var(--color-accent);
+        }
+        
+        /* Graveyard Grid */
         .graveyard-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -185,10 +351,17 @@
             background: linear-gradient(145deg, var(--color-grave) 0%, rgba(35, 35, 55, 0.9) 100%);
             border-radius: 15px;
             overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s, opacity 0.5s;
             position: relative;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .grave-card.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .grave-card:hover {
@@ -299,6 +472,52 @@
             gap: 0.5rem;
         }
         
+        /* Achievements */
+        .achievements {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .achievements h3 {
+            margin-bottom: 1rem;
+            color: var(--color-gray);
+        }
+        
+        .badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .badge {
+            background: var(--color-grave);
+            padding: 1rem;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transition: transform 0.3s;
+        }
+        
+        .badge:hover {
+            transform: scale(1.1);
+        }
+        
+        .badge.locked {
+            background: var(--color-darker);
+            opacity: 0.5;
+        }
+        
+        .badge-text {
+            font-size: 0.7rem;
+            margin-top: 0.5rem;
+        }
+        
+        /* Email Capture */
         .email-capture {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
@@ -507,6 +726,22 @@
             .graveyard-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .proof-items {
+                gap: 1.5rem;
+            }
+            
+            .proof-number {
+                font-size: 2rem;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cemetery-map {
+                min-height: 400px;
+            }
         }
     </style>
 </head>
@@ -529,11 +764,45 @@
             <p>Resurrect abandoned SaaS projects with proven technology and untapped potential. Perfect for developers and entrepreneurs seeking their next opportunity.</p>
         </section>
 
+        <!-- Social Proof Section -->
+        <section class="social-proof">
+            <div class="proof-items">
+                <div class="proof-item">
+                    <div class="proof-number">3</div>
+                    <div class="proof-label">Projects Resurrected</div>
+                </div>
+                <div class="proof-item">
+                    <div class="proof-number" id="subscriber-count">47</div>
+                    <div class="proof-label">Grave Diggers Joined</div>
+                </div>
+                <div class="proof-item">
+                    <div class="proof-number">$14.2K</div>
+                    <div class="proof-label">Value Resurrected</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials">
+            <h2 class="section-title">Resurrection Success Stories</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                <div class="testimonial-card">
+                    <div class="testimonial-icon">⚡</div>
+                    <p class="testimonial-text">"Bought a dead analytics tool for $800, added Stripe integration, now making $2.3K MRR. The graveyard is pure gold."</p>
+                    <div class="testimonial-author">- Alex, Solo Founder</div>
+                </div>
+                <div class="testimonial-card undertaker">
+                    <div class="testimonial-icon undertaker">💀</div>
+                    <p class="testimonial-text">"Sold my failed project for $2.1K instead of $0. Got closure AND capital for my next venture. Win-win."</p>
+                    <div class="testimonial-author">- Sarah, Failed Founder</div>
+                </div>
+            </div>
+        </section>
+
         <section class="roles-section">
             <div class="role-card tomb-raider-card">
                 <div class="role-image tomb-raider-image">
                     <i class="fas fa-helmet-battle"></i>
-					<img src="tomb_raider_character.jpg" alt="Tomb Raider Character" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                 </div>
                 <h2 class="role-title">Tomb Raiders</h2>
                 <p class="role-description">
@@ -549,7 +818,6 @@
             <div class="role-card undertaker-card">
                 <div class="role-image undertaker-image">
                     <i class="fas fa-coffin"></i>
-					<img src="undertaker_character.jpg" alt="Undertaker Character" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                 </div>
                 <h2 class="role-title">Undertakers</h2>
                 <p class="role-description">
@@ -563,12 +831,85 @@
             </div>
         </section>
 
+        <!-- Virtual Tools Section -->
+        <section class="tools-section">
+            <h2 class="section-title">Choose Your Resurrection Tools</h2>
+            <div class="tools-grid">
+                <div class="tool-card" onclick="selectTool('shovel')">
+                    <div class="tool-icon">⛏️</div>
+                    <h3>Tomb Raider Kit</h3>
+                    <p class="tool-description">Dig up hidden gems and uncover treasure</p>
+                </div>
+                <div class="tool-card undertaker" onclick="selectTool('coffin')">
+                    <div class="tool-icon">⚰️</div>
+                    <h3>Undertaker Kit</h3>
+                    <p class="tool-description">Respectfully bury projects with dignity</p>
+                </div>
+            </div>
+        </section>
+
+        <h2 class="section-title">Interactive Graveyard Map</h2>
+        <p style="text-align: center; color: var(--color-gray); margin-bottom: 2rem;">
+            Click on tombstones to explore resurrection-ready projects. Each grave holds a story waiting for its next chapter.
+        </p>
+
+        <!-- Cemetery Map -->
+        <div class="cemetery-map" id="cemetery-map">
+            <div class="tombstone cheap" style="top: 20%; left: 15%;" data-project="GhostWriter AI">
+                <div class="tombstone-icon">🪦</div>
+                <div class="tombstone-label">GhostWriter AI</div>
+            </div>
+            <div class="tombstone mid" style="top: 60%; left: 70%;" data-project="Crypto Phoenix">
+                <div class="tombstone-icon">🪦</div>
+                <div class="tombstone-label">Crypto Phoenix</div>
+            </div>
+            <div class="tombstone cheap" style="top: 40%; left: 80%;" data-project="Viral Undertaker">
+                <div class="tombstone-icon">🪦</div>
+                <div class="tombstone-label">Viral Undertaker</div>
+            </div>
+            <div class="tombstone mid" style="top: 70%; left: 30%;" data-project="Dating Ghost">
+                <div class="tombstone-icon">🪦</div>
+                <div class="tombstone-label">Dating Ghost</div>
+            </div>
+            <div class="tombstone cheap" style="top: 30%; left: 50%;" data-project="Zombie Sales">
+                <div class="tombstone-icon">🪦</div>
+                <div class="tombstone-label">Zombie Sales</div>
+            </div>
+            <div class="tombstone mid" style="top: 50%; left: 40%;" data-project="Phantom Teams">
+                <div class="tombstone-icon">🪦</div>
+                <div class="tombstone-label">Phantom Teams</div>
+            </div>
+        </div>
+
+        <!-- Achievement Badges -->
+        <div class="achievements">
+            <h3>Graveyard Badges</h3>
+            <div class="badges">
+                <div class="badge">
+                    <div>🪦</div>
+                    <div class="badge-text">First Visit</div>
+                </div>
+                <div class="badge locked">
+                    <div>🔒</div>
+                    <div class="badge-text">Project Resurrector</div>
+                </div>
+                <div class="badge locked">
+                    <div>🔒</div>
+                    <div class="badge-text">Grave Digger</div>
+                </div>
+                <div class="badge locked">
+                    <div>🔒</div>
+                    <div class="badge-text">Undertaker</div>
+                </div>
+            </div>
+        </div>
+
         <h2 class="section-title">Resurrection-Ready Projects</h2>
         <p style="text-align: center; color: var(--color-gray); margin-bottom: 2rem;">
             These digital graves hold projects that didn't fail because they were bad - they just need the right undertaker to bring them back to life.
         </p>
 
-        <div class="graveyard-grid">
+        <div class="graveyard-grid" id="graveyard-grid">
             <!-- Grave 1: AI GhostWriter -->
             <div class="grave-card">
                 <div class="grave-card-header">
@@ -895,6 +1236,11 @@
                     waitlistForm.style.display = 'none';
                     successMessage.style.display = 'block';
                     
+                    // Update subscriber count
+                    const countElement = document.getElementById('subscriber-count');
+                    let currentCount = parseInt(countElement.textContent);
+                    countElement.textContent = currentCount + 1;
+                    
                     // Reset form for potential re-use
                     waitlistForm.reset();
                     
@@ -986,6 +1332,67 @@
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
             });
+        });
+        
+        // Progressive project reveal animation
+        function revealProjects() {
+            const projects = document.querySelectorAll('.grave-card');
+            projects.forEach((project, index) => {
+                setTimeout(() => {
+                    project.classList.add('visible');
+                }, index * 200);
+            });
+        }
+        
+        // Tool selection functionality
+        function selectTool(tool) {
+            const toolCards = document.querySelectorAll('.tool-card');
+            toolCards.forEach(card => {
+                card.style.transform = 'scale(1)';
+                card.style.boxShadow = 'none';
+            });
+            
+            const selectedTool = document.querySelector(`.tool-card${tool === 'shovel' ? '' : '.undertaker'}`);
+            selectedTool.style.transform = 'scale(1.05)';
+            selectedTool.style.boxShadow = '0 10px 25px rgba(0,0,0,0.3)';
+            
+            // Show confirmation message
+            alert(`You've selected the ${tool === 'shovel' ? 'Tomb Raider Kit' : 'Undertaker Kit'}! Ready to ${tool === 'shovel' ? 'dig for treasure' : 'give projects a proper burial'}?`);
+        }
+        
+        // Cemetery map tombstone interactions
+        const tombstones = document.querySelectorAll('.tombstone');
+        tombstones.forEach(tombstone => {
+            tombstone.addEventListener('click', function() {
+                const projectName = this.getAttribute('data-project');
+                resurrectProject.value = projectName;
+                
+                // Set Formspree subject with the project name
+                const subjectInput = resurrectModal.querySelector('input[name="_subject"]');
+                subjectInput.value = `Resurrection Inquiry: ${projectName}`;
+                
+                resurrectModal.style.display = 'flex';
+            });
+        });
+        
+        // Initialize animations on page load
+        window.addEventListener('load', function() {
+            revealProjects();
+            
+            // Animate subscriber count
+            const countElement = document.getElementById('subscriber-count');
+            let targetCount = 47;
+            let currentCount = 0;
+            let increment = Math.ceil(targetCount / 20);
+            
+            const counter = setInterval(() => {
+                currentCount += increment;
+                if (currentCount >= targetCount) {
+                    currentCount = targetCount;
+                    clearInterval(counter);
+                }
+                countElement.textContent = currentCount;
+            }, 50);
         });
     </script>
 </body>
