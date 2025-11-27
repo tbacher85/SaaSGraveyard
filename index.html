@@ -242,60 +242,40 @@
             gap: 0.5rem;
         }
         
-        /* Tools Section */
-        .tools-section {
-            margin: 3rem 0;
+        .kit-section {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .kit-tools {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            justify-content: center;
+        }
+        
+        .kit-tool {
             text-align: center;
         }
         
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-        .tool-card {
-            padding: 1.5rem;
-            border: 2px solid var(--color-tomb-raider);
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .tool-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-        
-        .tool-card.undertaker {
-            border-color: var(--color-undertaker);
-        }
-        
-        .tool-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
-        .tool-card h3 {
-            color: var(--color-tomb-raider);
+        .kit-tool-icon {
+            font-size: 2rem;
             margin-bottom: 0.5rem;
         }
         
-        .tool-card.undertaker h3 {
-            color: var(--color-undertaker);
-        }
-        
-        .tool-description {
+        .kit-tool-label {
+            font-size: 0.8rem;
             color: var(--color-gray);
-            font-size: 0.9rem;
         }
         
         /* Cemetery Map */
         .cemetery-map {
             position: relative;
             min-height: 600px;
-            background: linear-gradient(rgba(26, 26, 46, 0.9), rgba(26, 26, 46, 0.9)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="%232a2a3e" width="100" height="100"/><circle fill="%231a1a2e" cx="20" cy="20" r="2"/><circle fill="%231a1a2e" cx="60" cy="40" r="3"/></svg>');
+            background: linear-gradient(rgba(26, 26, 46, 0.85), rgba(26, 26, 46, 0.9)), url('https://github.com/tbacher85/SaaSGraveyard/blob/main/graveyard_bg.jpg');
+            background-size: cover;
+            background-position: center;
             border-radius: 15px;
             margin: 3rem 0;
             padding: 2rem;
@@ -307,6 +287,7 @@
             cursor: pointer;
             transition: transform 0.3s;
             text-align: center;
+            filter: drop-shadow(2px 2px 8px rgba(0,0,0,0.7));
         }
         
         .tombstone:hover {
@@ -315,7 +296,6 @@
         
         .tombstone-icon {
             font-size: 3rem;
-            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
         }
         
         .tombstone-label {
@@ -735,8 +715,9 @@
                 font-size: 2rem;
             }
             
-            .tools-grid {
-                grid-template-columns: 1fr;
+            .kit-tools {
+                flex-direction: column;
+                gap: 0.5rem;
             }
             
             .cemetery-map {
@@ -813,6 +794,30 @@
                     <p><i class="fas fa-check-circle" style="color: var(--color-tomb-raider);"></i> Skip the initial development phase</p>
                     <p><i class="fas fa-check-circle" style="color: var(--color-tomb-raider);"></i> Acquire existing code and users</p>
                 </div>
+                
+                <!-- Integrated Kit for Tomb Raiders -->
+                <div class="kit-section">
+                    <h4 style="color: var(--color-tomb-raider); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fas fa-toolbox"></i> Tomb Raider Kit
+                    </h4>
+                    <div class="kit-tools">
+                        <div class="kit-tool">
+                            <div class="kit-tool-icon">⛏️</div>
+                            <div class="kit-tool-label">Discovery Tools</div>
+                        </div>
+                        <div class="kit-tool">
+                            <div class="kit-tool-icon">💰</div>
+                            <div class="kit-tool-label">Valuation Guide</div>
+                        </div>
+                        <div class="kit-tool">
+                            <div class="kit-tool-icon">📊</div>
+                            <div class="kit-tool-label">Due Diligence</div>
+                        </div>
+                    </div>
+                    <button class="form-submit" onclick="selectRole('tomb-raider')" style="width: 100%; margin-top: 1rem;">
+                        Get Tomb Raider Kit & Join Waitlist
+                    </button>
+                </div>
             </div>
             
             <div class="role-card undertaker-card">
@@ -828,22 +833,29 @@
                     <p><i class="fas fa-check-circle" style="color: var(--color-undertaker);"></i> See your creation get a second chance</p>
                     <p><i class="fas fa-check-circle" style="color: var(--color-undertaker);"></i> Connect with serious acquirers</p>
                 </div>
-            </div>
-        </section>
-
-        <!-- Virtual Tools Section -->
-        <section class="tools-section">
-            <h2 class="section-title">Choose Your Resurrection Tools</h2>
-            <div class="tools-grid">
-                <div class="tool-card" onclick="selectTool('shovel')">
-                    <div class="tool-icon">⛏️</div>
-                    <h3>Tomb Raider Kit</h3>
-                    <p class="tool-description">Dig up hidden gems and uncover treasure</p>
-                </div>
-                <div class="tool-card undertaker" onclick="selectTool('coffin')">
-                    <div class="tool-icon">⚰️</div>
-                    <h3>Undertaker Kit</h3>
-                    <p class="tool-description">Respectfully bury projects with dignity</p>
+                
+                <!-- Integrated Kit for Undertakers -->
+                <div class="kit-section">
+                    <h4 style="color: var(--color-undertaker); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fas fa-tools"></i> Undertaker Kit
+                    </h4>
+                    <div class="kit-tools">
+                        <div class="kit-tool">
+                            <div class="kit-tool-icon">⚰️</div>
+                            <div class="kit-tool-label">Listing Prep</div>
+                        </div>
+                        <div class="kit-tool">
+                            <div class="kit-tool-icon">📝</div>
+                            <div class="kit-tool-label">Legal Templates</div>
+                        </div>
+                        <div class="kit-tool">
+                            <div class="kit-tool-icon">🤝</div>
+                            <div class="kit-tool-label">Deal Support</div>
+                        </div>
+                    </div>
+                    <button class="form-submit" onclick="selectRole('undertaker')" style="width: 100%; margin-top: 1rem; background: var(--color-undertaker);">
+                        Get Undertaker Kit & Join Waitlist
+                    </button>
                 </div>
             </div>
         </section>
@@ -853,7 +865,7 @@
             Click on tombstones to explore resurrection-ready projects. Each grave holds a story waiting for its next chapter.
         </p>
 
-        <!-- Cemetery Map -->
+        <!-- Cemetery Map with Pixel Art Background -->
         <div class="cemetery-map" id="cemetery-map">
             <div class="tombstone cheap" style="top: 20%; left: 15%;" data-project="GhostWriter AI">
                 <div class="tombstone-icon">🪦</div>
@@ -1085,7 +1097,7 @@
             </div>
         </div>
 
-        <div class="email-capture">
+        <div class="email-capture" id="email-capture">
             <h2 class="email-capture-title">Join the Resurrection Movement</h2>
             <p style="margin-bottom: 1.5rem; color: var(--color-gray);">
                 Get early access to new graves and exclusive resurrection opportunities. Be the first to know when we unearth new projects.
@@ -1344,20 +1356,53 @@
             });
         }
         
-        // Tool selection functionality
-        function selectTool(tool) {
-            const toolCards = document.querySelectorAll('.tool-card');
-            toolCards.forEach(card => {
-                card.style.transform = 'scale(1)';
-                card.style.boxShadow = 'none';
-            });
+        // Role selection with kit integration
+        function selectRole(role) {
+            // Scroll to signup form
+            document.getElementById('email-capture').scrollIntoView({ behavior: 'smooth' });
             
-            const selectedTool = document.querySelector(`.tool-card${tool === 'shovel' ? '' : '.undertaker'}`);
-            selectedTool.style.transform = 'scale(1.05)';
-            selectedTool.style.boxShadow = '0 10px 25px rgba(0,0,0,0.3)';
+            // Auto-select the role in the form
+            const roleOption = document.querySelector(`.role-option[data-role="${role}"]`);
+            if (roleOption) {
+                document.querySelectorAll('.role-option').forEach(opt => opt.classList.remove('selected'));
+                roleOption.classList.add('selected');
+                document.getElementById('selected-role').value = role;
+            }
             
-            // Show confirmation message
-            alert(`You've selected the ${tool === 'shovel' ? 'Tomb Raider Kit' : 'Undertaker Kit'}! Ready to ${tool === 'shovel' ? 'dig for treasure' : 'give projects a proper burial'}?`);
+            // Show contextual message based on role
+            const message = role === 'tomb-raider' 
+                ? "Ready to dig for treasure? We'll send your Tomb Raider Kit immediately after signup!"
+                : "Ready to give your project a proper send-off? We'll send your Undertaker Kit right away!";
+            
+            // Create a temporary notification
+            showNotification(message);
+        }
+        
+        function showNotification(message) {
+            // Remove existing notification if any
+            const existingNotification = document.querySelector('.role-notification');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+            
+            // Create new notification
+            const notification = document.createElement('div');
+            notification.className = 'role-notification';
+            notification.innerHTML = `
+                <div style="position: fixed; top: 20px; right: 20px; background: var(--color-success); color: white; padding: 1rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 1001; max-width: 300px;">
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fas fa-check-circle"></i>
+                        <span>${message}</span>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Auto-remove after 5 seconds
+            setTimeout(() => {
+                notification.remove();
+            }, 5000);
         }
         
         // Cemetery map tombstone interactions
