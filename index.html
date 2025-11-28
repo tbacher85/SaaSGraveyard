@@ -3,1508 +3,819 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SaaS Graveyard - Where Failed SaaS Rises Again</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Stellar Moments | Preserve Your Special Memories</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --color-dark: #1a1a2e;
-            --color-darker: #16213e;
-            --color-accent: #e94560;
-            --color-secondary: #533483;
-            --color-tomb-raider: #4cc9a4;
-            --color-undertaker: #9c42f5;
-            --color-light: #f0f0f0;
-            --color-gray: #8a8a8a;
-            --color-success: #4cc9a4;
-            --color-warning: #ff9f43;
-            --color-grave: #2a2a3e;
+            --color-deep-space: #0f0f1f;
+            --color-starry-night: #1a1a2e;
+            --color-twilight: #2d2b55;
+            --color-nebula: #6a4c93;
+            --color-starlight: #f8f7ff;
+            --color-gold: #d4af37;
+            --color-soft-gold: #f4e4a9;
+            --color-mist: #a8b2c0;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Inter', sans-serif;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: 'Source Sans Pro', sans-serif;
-            background: linear-gradient(135deg, var(--color-darker) 0%, var(--color-dark) 100%);
-            color: var(--color-light);
-            line-height: 1.6;
-            min-height: 100vh;
-            position: relative;
+            font-family: var(--font-body);
+            background-color: var(--color-deep-space);
+            color: var(--color-starlight);
+            line-height: 1.7;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 1.5rem;
+            padding: 0 2rem;
         }
-        
-        header {
-            padding: 1.5rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(15, 15, 31, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1.2rem 0;
+            border-bottom: 1px solid rgba(106, 76, 147, 0.2);
         }
-        
-        .logo {
+
+        .nav-container {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
         }
-        
-        .logo-icon {
-            font-size: 2rem;
-            color: var(--color-accent);
-        }
-        
-        .logo-text {
-            font-family: 'Playfair Display', serif;
+
+        .logo {
+            font-family: var(--font-heading);
             font-size: 1.8rem;
             font-weight: 700;
+            color: var(--color-starlight);
+            text-decoration: none;
         }
-        
+
+        .logo span {
+            color: var(--color-gold);
+        }
+
+        /* Hero Section */
         .hero {
+            padding: 8rem 0 4rem;
             text-align: center;
-            padding: 3rem 0 2rem;
-            max-width: 800px;
-            margin: 0 auto;
+            position: relative;
+            background: linear-gradient(135deg, var(--color-twilight) 0%, var(--color-deep-space) 100%);
         }
-        
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(106, 76, 147, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 5vw, 4rem);
             margin-bottom: 1.5rem;
-            background: linear-gradient(to right, #fff 0%, var(--color-accent) 100%);
+            background: linear-gradient(135deg, var(--color-starlight) 0%, var(--color-soft-gold) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--color-gray);
+
+        .lead {
+            font-size: 1.3rem;
+            color: var(--color-soft-gold);
             margin-bottom: 2rem;
         }
-        
-        .platform-badge {
-            display: inline-block;
-            background: rgba(233, 69, 96, 0.2);
-            color: var(--color-accent);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            border: 1px solid var(--color-accent);
+
+        /* Memory Types */
+        .memory-types {
+            padding: 4rem 0;
         }
-        
-        /* Social Proof Section */
-        .social-proof {
-            text-align: center;
-            margin: 2rem 0;
-            padding: 1.5rem;
-            background: rgba(76, 201, 164, 0.1);
-            border-radius: 15px;
-            border: 1px solid var(--color-tomb-raider);
-        }
-        
-        .proof-items {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            flex-wrap: wrap;
-        }
-        
-        .proof-item {
-            text-align: center;
-        }
-        
-        .proof-number {
+
+        .section-title {
+            font-family: var(--font-heading);
             font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--color-tomb-raider);
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--color-soft-gold);
         }
-        
-        .proof-label {
-            color: var(--color-gray);
-            font-size: 0.9rem;
-        }
-        
-        /* Testimonials */
-        .testimonials {
-            margin: 4rem 0;
-        }
-        
-        .testimonial-card {
-            background: var(--color-grave);
-            padding: 2rem;
-            border-radius: 15px;
-            border-left: 4px solid var(--color-tomb-raider);
-        }
-        
-        .testimonial-card.undertaker {
-            border-left-color: var(--color-undertaker);
-        }
-        
-        .testimonial-icon {
-            color: var(--color-tomb-raider);
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .testimonial-icon.undertaker {
-            color: var(--color-undertaker);
-        }
-        
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 1.5rem;
-        }
-        
-        .testimonial-author {
-            font-weight: bold;
-        }
-        
-        /* Roles Section */
-        .roles-section {
+
+        .memory-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin: 3rem 0;
+            margin-bottom: 3rem;
         }
-        
-        .role-card {
-            background: linear-gradient(145deg, rgba(42, 42, 62, 0.8) 0%, rgba(35, 35, 55, 0.8) 100%);
-            border-radius: 15px;
+
+        .memory-card {
+            background: linear-gradient(145deg, rgba(42, 42, 62, 0.8), rgba(26, 26, 46, 0.9));
+            border-radius: 16px;
             padding: 2.5rem;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .role-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .tomb-raider-card {
-            border-top: 5px solid var(--color-tomb-raider);
-        }
-        
-        .undertaker-card {
-            border-top: 5px solid var(--color-undertaker);
-        }
-        
-        .role-image {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 1.5rem;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            background: rgba(255, 255, 255, 0.1);
-            border: 3px solid;
-        }
-        
-        .tomb-raider-image {
-            color: var(--color-tomb-raider);
-            border-color: var(--color-tomb-raider);
-        }
-        
-        .undertaker-image {
-            color: var(--color-undertaker);
-            border-color: var(--color-undertaker);
-        }
-        
-        .role-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-        
-        .role-description {
-            color: var(--color-gray);
-            margin-bottom: 1.5rem;
-        }
-        
-        .role-highlights {
-            text-align: left;
-            margin-top: 1.5rem;
-        }
-        
-        .role-highlights p {
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .kit-section {
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .kit-tools {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            justify-content: center;
-        }
-        
-        .kit-tool {
-            text-align: center;
-        }
-        
-        .kit-tool-icon {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .kit-tool-label {
-            font-size: 0.8rem;
-            color: var(--color-gray);
-        }
-        
-        /* Cemetery Map - FIXED */
-        .cemetery-map {
-            position: relative;
-            min-height: 600px;
-            background: 
-                /* Pixel grass pattern - more visible */
-                repeating-linear-gradient(
-                    0deg,
-                    rgba(40, 80, 40, 0.3),
-                    rgba(40, 80, 40, 0.3) 2px,
-                    rgba(50, 90, 50, 0.3) 2px,
-                    rgba(50, 90, 50, 0.3) 4px
-                ),
-                repeating-linear-gradient(
-                    90deg,
-                    rgba(30, 70, 30, 0.2),
-                    rgba(30, 70, 30, 0.2) 2px,
-                    rgba(40, 80, 40, 0.2) 2px,
-                    rgba(40, 80, 40, 0.2) 4px
-                ),
-                /* Base grass gradient - brighter */
-                linear-gradient(135deg, #2a5a2a 0%, #3a7a3a 100%);
-            border-radius: 15px;
-            margin: 3rem 0;
-            padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-        }
-        
-        .tombstone {
-            position: absolute;
+            border: 1px solid rgba(106, 76, 147, 0.3);
+            transition: all 0.4s ease;
             cursor: pointer;
-            transition: transform 0.3s;
-            text-align: center;
-            filter: drop-shadow(2px 2px 8px rgba(0,0,0,0.7));
-            z-index: 2;
         }
-        
-        .tombstone:hover {
-            transform: scale(1.1);
-        }
-        
-        .tombstone-icon {
-            font-size: 3rem;
-        }
-        
-        .tombstone-label {
-            background: rgba(0,0,0,0.7);
-            padding: 0.5rem;
-            border-radius: 5px;
-            font-size: 0.8rem;
-            margin-top: 0.5rem;
-            white-space: nowrap;
-        }
-        
-        .tombstone.cheap {
-            color: var(--color-success);
-        }
-        
-        .tombstone.mid {
-            color: var(--color-warning);
-        }
-        
-        .tombstone.expensive {
-            color: var(--color-accent);
-        }
-        
-        /* Desktop Tombstone Positions - FIXED */
-        .tombstone:nth-child(1) { top: 15%; left: 10%; }
-        .tombstone:nth-child(2) { top: 65%; left: 75%; }
-        .tombstone:nth-child(3) { top: 35%; left: 80%; }
-        .tombstone:nth-child(4) { top: 75%; left: 25%; }
-        .tombstone:nth-child(5) { top: 25%; left: 45%; }
-        .tombstone:nth-child(6) { top: 55%; left: 35%; }
-        
-        /* Graveyard Grid */
-        .graveyard-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-        
-        .grave-card {
-            background: linear-gradient(145deg, var(--color-grave) 0%, rgba(35, 35, 55, 0.9) 100%);
-            border-radius: 15px;
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s, opacity 0.5s;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        
-        .grave-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .grave-card:hover {
+
+        .memory-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            border-color: var(--color-nebula);
         }
-        
-        .grave-card::before {
-            content: '⚰️';
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 1.5rem;
-            opacity: 0.7;
-        }
-        
-        .grave-card-header {
-            padding: 1.5rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-        }
-        
-        .grave-card-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: white;
-        }
-        
-        .grave-card-meta {
-            display: flex;
-            justify-content: space-between;
-            color: var(--color-gray);
-            font-size: 0.9rem;
-        }
-        
-        .grave-card-body {
-            padding: 1.5rem;
-        }
-        
-        .grave-card-description {
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-            position: relative;
-            padding-left: 1rem;
-            border-left: 2px solid var(--color-accent);
-        }
-        
-        .grave-card-assets {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .asset-tag {
-            background: rgba(83, 52, 131, 0.3);
-            padding: 0.3rem 0.8rem;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-        
-        .grave-card-footer {
-            padding: 1.5rem;
-            background: rgba(0, 0, 0, 0.2);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .grave-price {
-            font-weight: 600;
-            font-size: 1.2rem;
-            color: var(--color-success);
-        }
-        
-        .resurrect-button {
-            background: var(--color-accent);
-            color: white;
-            border: none;
-            padding: 0.7rem 1.5rem;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: background 0.3s;
-            font-weight: 600;
-        }
-        
-        .resurrect-button:hover {
-            background: #ff5c77;
-        }
-        
-        .death-certificate {
-            background: rgba(233, 69, 96, 0.1);
-            border-radius: 8px;
-            padding: 1rem;
-            margin-top: 1rem;
-            border-left: 3px solid var(--color-accent);
-        }
-        
-        .death-certificate h4 {
-            color: var(--color-accent);
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        /* Achievements */
-        .achievements {
-            text-align: center;
-            margin: 2rem 0;
-        }
-        
-        .achievements h3 {
-            margin-bottom: 1rem;
-            color: var(--color-gray);
-        }
-        
-        .badges {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-        
-        .badge {
-            background: var(--color-grave);
-            padding: 1rem;
-            border-radius: 50%;
+
+        .memory-icon {
             width: 80px;
             height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--color-nebula), var(--color-twilight));
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-direction: column;
-            transition: transform 0.3s;
+            font-size: 2rem;
         }
-        
-        .badge:hover {
-            transform: scale(1.1);
+
+        /* Deliverables Showcase */
+        .deliverables-showcase {
+            padding: 4rem 0;
+            background: rgba(26, 26, 46, 0.5);
+            display: none;
         }
-        
-        .badge.locked {
-            background: var(--color-darker);
-            opacity: 0.5;
+
+        .deliverables-showcase.active {
+            display: block;
         }
-        
-        .badge-text {
-            font-size: 0.7rem;
-            margin-top: 0.5rem;
-        }
-        
-        /* Email Capture */
-        .email-capture {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 2.5rem;
-            max-width: 600px;
-            margin: 3rem auto;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
+        .showcase-header {
             text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .memory-preview {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .preview-visual {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin-right: 2rem;
+        }
+
+        .starry-preview { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .map-preview { background: linear-gradient(135deg, #4CAF50, #45a049); }
+        .moon-preview { background: linear-gradient(135deg, #757575, #9e9e9e); }
+
+        .deliverables-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .deliverable-card {
+            background: linear-gradient(145deg, rgba(42, 42, 62, 0.8), rgba(26, 26, 46, 0.9));
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(106, 76, 147, 0.3);
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
-        
-        .email-capture::before {
-            content: '🪦';
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 2rem;
-            opacity: 0.3;
-        }
-        
-        .email-capture-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: white;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-            text-align: left;
-        }
-        
-        .form-label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-        
-        .form-input {
-            width: 100%;
-            padding: 1rem;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.05);
-            color: white;
-            font-family: 'Source Sans Pro', sans-serif;
-        }
-        
-        .role-selection {
-            display: flex;
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-        
-        .role-option {
-            flex: 1;
-            text-align: center;
-            padding: 1.5rem;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
+
+        .deliverable-card.available {
             cursor: pointer;
-            transition: all 0.3s;
         }
-        
-        .role-option.selected {
-            border-color: var(--color-accent);
-            background: rgba(233, 69, 96, 0.1);
+
+        .deliverable-card.available:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-gold);
         }
-        
-        .tomb-raider-option.selected {
-            border-color: var(--color-tomb-raider);
-            background: rgba(76, 201, 164, 0.1);
+
+        .deliverable-card.coming-soon {
+            opacity: 0.7;
         }
-        
-        .undertaker-option.selected {
-            border-color: var(--color-undertaker);
-            background: rgba(156, 66, 245, 0.1);
-        }
-        
-        .role-option-icon {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .form-submit {
-            background: var(--color-accent);
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: background 0.3s;
-            width: 100%;
-        }
-        
-        .form-submit:hover {
-            background: #ff5c77;
-        }
-        
-        .success-message {
-            display: none;
-            text-align: center;
-            padding: 2rem;
-            background: rgba(76, 201, 164, 0.1);
-            border-radius: 10px;
-            border: 1px solid var(--color-tomb-raider);
-            margin-top: 2rem;
-        }
-        
-        .success-icon {
+
+        .deliverable-icon {
             font-size: 3rem;
-            color: var(--color-tomb-raider);
             margin-bottom: 1rem;
         }
-        
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            text-align: center;
-            margin: 3rem 0 2rem;
-            color: white;
-        }
-        
-        .disclaimer {
-            text-align: center;
-            color: var(--color-gray);
-            font-size: 0.9rem;
-            margin-top: 2rem;
-            font-style: italic;
-        }
-        
-        footer {
-            text-align: center;
-            margin-top: 4rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--color-gray);
-        }
-        
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(5px);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-        }
-        
-        .modal-content {
-            background: linear-gradient(135deg, var(--color-darker) 0%, var(--color-dark) 100%);
-            border-radius: 15px;
-            max-width: 500px;
-            width: 100%;
-            padding: 2.5rem;
-            position: relative;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .close-modal {
+
+        .status-badge {
             position: absolute;
             top: 1rem;
             right: 1rem;
-            background: none;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .status-available {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4CAF50;
+            border: 1px solid #4CAF50;
+        }
+
+        .status-soon {
+            background: rgba(255, 152, 0, 0.2);
+            color: #FF9800;
+            border: 1px solid #FF9800;
+        }
+
+        .deliverable-title {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--color-starlight);
+        }
+
+        .deliverable-description {
+            color: var(--color-mist);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .action-btn {
+            background: linear-gradient(135deg, var(--color-nebula), var(--color-twilight));
+            color: var(--color-starlight);
             border: none;
-            color: var(--color-gray);
-            font-size: 1.5rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-family: var(--font-body);
+            font-weight: 500;
             cursor: pointer;
-            transition: color 0.3s;
+            transition: all 0.3s ease;
         }
-        
-        .close-modal:hover {
-            color: var(--color-accent);
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(106, 76, 147, 0.4);
         }
-        
-        .tombstone-decoration {
-            position: fixed;
-            bottom: 0;
-            left: 0;
+
+        .action-btn.coming-soon {
+            background: rgba(255, 152, 0, 0.3);
+            color: #FF9800;
+            cursor: not-allowed;
+        }
+
+        .back-btn {
+            background: transparent;
+            color: var(--color-soft-gold);
+            border: 1px solid var(--color-gold);
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-family: var(--font-body);
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .back-btn:hover {
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        /* Lead Capture Form */
+        .lead-capture {
+            background: rgba(26, 26, 46, 0.5);
+            padding: 3rem;
+            border-radius: 16px;
+            border: 1px solid rgba(106, 76, 147, 0.3);
+            max-width: 600px;
+            margin: 0 auto;
+            display: none;
+        }
+
+        .lead-capture.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--color-mist);
+        }
+
+        input, select, textarea {
             width: 100%;
-            height: 60px;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path fill="%231a1a2e" d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path><path fill="%231a1a2e" d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path><path fill="%231a1a2e" d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path></svg>');
-            background-size: cover;
-            z-index: -1;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(106, 76, 147, 0.5);
+            background: rgba(15, 15, 31, 0.8);
+            color: var(--color-starlight);
+            font-family: var(--font-body);
         }
-        
-        /* Mobile Optimizations */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            
-            .role-selection {
-                flex-direction: column;
-            }
-            
-            .graveyard-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .proof-items {
-                gap: 1.5rem;
-            }
-            
-            .proof-number {
-                font-size: 2rem;
-            }
-            
-            .kit-tools {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-            
-            /* Mobile Cemetery Map */
-            .cemetery-map {
-                min-height: 400px;
-                padding: 1rem;
-                position: relative;
-                overflow: hidden;
-            }
-            
-            /* Mobile tombstone positions */
-            .tombstone {
-                transform: scale(0.8);
-            }
-            
-            .tombstone:nth-child(1) { top: 10%; left: 5%; }
-            .tombstone:nth-child(2) { top: 70%; left: 80%; }
-            .tombstone:nth-child(3) { top: 30%; left: 85%; }
-            .tombstone:nth-child(4) { top: 80%; left: 15%; }
-            .tombstone:nth-child(5) { top: 20%; left: 40%; }
-            .tombstone:nth-child(6) { top: 60%; left: 30%; }
-            
-            .tombstone-label {
-                font-size: 0.7rem;
-                padding: 0.3rem 0.5rem;
-            }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
         }
-        
-        @media (max-width: 480px) {
-            .cemetery-map {
-                min-height: 350px;
-            }
-            
-            .tombstone {
-                transform: scale(0.7);
-            }
-            
-            .tombstone:nth-child(1) { top: 8%; left: 3%; }
-            .tombstone:nth-child(2) { top: 75%; left: 82%; }
-            .tombstone:nth-child(3) { top: 25%; left: 88%; }
-            .tombstone:nth-child(4) { top: 85%; left: 10%; }
-            .tombstone:nth-child(5) { top: 15%; left: 35%; }
-            .tombstone:nth-child(6) { top: 65%; left: 25%; }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--color-nebula), var(--color-twilight));
+            color: var(--color-starlight);
+            box-shadow: 0 8px 32px rgba(106, 76, 147, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(106, 76, 147, 0.5);
+        }
+
+        /* Examples Section */
+        .examples {
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .example-card {
+            background: rgba(42, 42, 62, 0.8);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid rgba(106, 76, 147, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .example-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .example-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--color-nebula), var(--color-twilight));
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .text-center {
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <div class="tombstone-decoration"></div>
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <a href="#" class="logo">Stellar<span>Moments</span></a>
+        </div>
+    </nav>
 
-    <header>
+    <!-- Hero Section -->
+    <section class="hero">
         <div class="container">
-            <div class="logo">
-                <div class="logo-icon"><i class="fas fa-skull-crossbones"></i></div>
-                <div class="logo-text">The SaaS Graveyard</div>
-            </div>
+            <h1>Preserve Your Special Moments Forever</h1>
+            <p class="lead">Transform your memories into beautiful digital experiences you can share and enjoy every day</p>
         </div>
-    </header>
+    </section>
 
-    <div class="container">
-        <section class="hero">
-            <div class="platform-badge">Where Failed SaaS Rises Again</div>
-            <h1>Discover Hidden Treasures in the SaaS Graveyard</h1>
-            <p>Resurrect abandoned SaaS projects with proven technology and untapped potential. Perfect for developers and entrepreneurs seeking their next opportunity.</p>
-        </section>
-
-        <!-- Social Proof Section -->
-        <section class="social-proof">
-            <div class="proof-items">
-                <div class="proof-item">
-                    <div class="proof-number">3</div>
-                    <div class="proof-label">Projects Resurrected</div>
-                </div>
-                <div class="proof-item">
-                    <div class="proof-number" id="subscriber-count">47</div>
-                    <div class="proof-label">Grave Diggers Joined</div>
-                </div>
-                <div class="proof-item">
-                    <div class="proof-number">$14.2K</div>
-                    <div class="proof-label">Value Resurrected</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Testimonials Section -->
-        <section class="testimonials">
-            <h2 class="section-title">Resurrection Success Stories</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
-                <div class="testimonial-card">
-                    <div class="testimonial-icon">⚡</div>
-                    <p class="testimonial-text">"Bought a dead analytics tool for $800, added Stripe integration, now making $2.3K MRR. The graveyard is pure gold."</p>
-                    <div class="testimonial-author">- Alex, Solo Founder</div>
-                </div>
-                <div class="testimonial-card undertaker">
-                    <div class="testimonial-icon undertaker">💀</div>
-                    <p class="testimonial-text">"Sold my failed project for $2.1K instead of $0. Got closure AND capital for my next venture. Win-win."</p>
-                    <div class="testimonial-author">- Sarah, Failed Founder</div>
-                </div>
-            </div>
-        </section>
-
-        <section class="roles-section">
-            <div class="role-card tomb-raider-card">
-                <div class="role-image tomb-raider-image">
-                    <i class="fas fa-helmet-battle"></i>
-					<img src="tomb_raider_character.jpg" alt="Tomb Raider Character" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-                </div>
-                <h2 class="role-title">Tomb Raiders</h2>
-                <p class="role-description">
-                    Adventurous developers and entrepreneurs seeking hidden treasures among failed SaaS projects.
-                </p>
-                <div class="role-highlights">
-                    <p><i class="fas fa-check-circle" style="color: var(--color-tomb-raider);"></i> Find undervalued SaaS assets</p>
-                    <p><i class="fas fa-check-circle" style="color: var(--color-tomb-raider);"></i> Skip the initial development phase</p>
-                    <p><i class="fas fa-check-circle" style="color: var(--color-tomb-raider);"></i> Acquire existing code and users</p>
-                </div>
-                
-                <!-- Integrated Kit for Tomb Raiders -->
-                <div class="kit-section">
-                    <h4 style="color: var(--color-tomb-raider); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-                        <i class="fas fa-toolbox"></i> Tomb Raider Kit
-                    </h4>
-                    <div class="kit-tools">
-                        <div class="kit-tool">
-                            <div class="kit-tool-icon">⛏️</div>
-                            <div class="kit-tool-label">Discovery Tools</div>
-                        </div>
-                        <div class="kit-tool">
-                            <div class="kit-tool-icon">💰</div>
-                            <div class="kit-tool-label">Valuation Guide</div>
-                        </div>
-                        <div class="kit-tool">
-                            <div class="kit-tool-icon">📊</div>
-                            <div class="kit-tool-label">Due Diligence</div>
-                        </div>
-                    </div>
-                    <button class="form-submit" onclick="selectRole('tomb-raider')" style="width: 100%; margin-top: 1rem;">
-                        Get Tomb Raider Kit & Join Waitlist
-                    </button>
-                </div>
-            </div>
-            
-            <div class="role-card undertaker-card">
-                <div class="role-image undertaker-image">
-                    <i class="fas fa-coffin"></i>
-					<img src="undertaker_character.jpg" alt="Undertaker Character" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-                </div>
-                <h2 class="role-title">Undertakers</h2>
-                <p class="role-description">
-                    Founders who need to respectfully lay their projects to rest while recouping some value.
-                </p>
-                <div class="role-highlights">
-                    <p><i class="fas fa-check-circle" style="color: var(--color-undertaker);"></i> Recover value from failed projects</p>
-                    <p><i class="fas fa-check-circle" style="color: var(--color-undertaker);"></i> See your creation get a second chance</p>
-                    <p><i class="fas fa-check-circle" style="color: var(--color-undertaker);"></i> Connect with serious acquirers</p>
-                </div>
-                
-                <!-- Integrated Kit for Undertakers -->
-                <div class="kit-section">
-                    <h4 style="color: var(--color-undertaker); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-                        <i class="fas fa-tools"></i> Undertaker Kit
-                    </h4>
-                    <div class="kit-tools">
-                        <div class="kit-tool">
-                            <div class="kit-tool-icon">⚰️</div>
-                            <div class="kit-tool-label">Listing Prep</div>
-                        </div>
-                        <div class="kit-tool">
-                            <div class="kit-tool-icon">📝</div>
-                            <div class="kit-tool-label">Legal Templates</div>
-                        </div>
-                        <div class="kit-tool">
-                            <div class="kit-tool-icon">🤝</div>
-                            <div class="kit-tool-label">Deal Support</div>
-                        </div>
-                    </div>
-                    <button class="form-submit" onclick="selectRole('undertaker')" style="width: 100%; margin-top: 1rem; background: var(--color-undertaker);">
-                        Get Undertaker Kit & Join Waitlist
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <h2 class="section-title">Interactive Graveyard Map</h2>
-        <p style="text-align: center; color: var(--color-gray); margin-bottom: 2rem;">
-            Click on tombstones to explore resurrection-ready projects. Each grave holds a story waiting for its next chapter.
-        </p>
-
-        <!-- Cemetery Map with Fixed Background -->
-        <div class="cemetery-map" id="cemetery-map">
-            <div class="tombstone cheap" data-project="GhostWriter AI">
-                <div class="tombstone-icon">🪦</div>
-                <div class="tombstone-label">GhostWriter AI</div>
-            </div>
-            <div class="tombstone mid" data-project="Crypto Phoenix">
-                <div class="tombstone-icon">🪦</div>
-                <div class="tombstone-label">Crypto Phoenix</div>
-            </div>
-            <div class="tombstone cheap" data-project="Viral Undertaker">
-                <div class="tombstone-icon">🪦</div>
-                <div class="tombstone-label">Viral Undertaker</div>
-            </div>
-            <div class="tombstone mid" data-project="Dating Ghost">
-                <div class="tombstone-icon">🪦</div>
-                <div class="tombstone-label">Dating Ghost</div>
-            </div>
-            <div class="tombstone cheap" data-project="Zombie Sales">
-                <div class="tombstone-icon">🪦</div>
-                <div class="tombstone-label">Zombie Sales</div>
-            </div>
-            <div class="tombstone mid" data-project="Phantom Teams">
-                <div class="tombstone-icon">🪦</div>
-                <div class="tombstone-label">Phantom Teams</div>
-            </div>
-        </div>
-
-        <!-- Achievement Badges -->
-        <div class="achievements">
-            <h3>Graveyard Badges</h3>
-            <div class="badges">
-                <div class="badge">
-                    <div>🪦</div>
-                    <div class="badge-text">First Visit</div>
-                </div>
-                <div class="badge locked">
-                    <div>🔒</div>
-                    <div class="badge-text">Project Resurrector</div>
-                </div>
-                <div class="badge locked">
-                    <div>🔒</div>
-                    <div class="badge-text">Grave Digger</div>
-                </div>
-                <div class="badge locked">
-                    <div>🔒</div>
-                    <div class="badge-text">Undertaker</div>
-                </div>
-            </div>
-        </div>
-
-        <h2 class="section-title">Resurrection-Ready Projects</h2>
-        <p style="text-align: center; color: var(--color-gray); margin-bottom: 2rem;">
-            These digital graves hold projects that didn't fail because they were bad - they just need the right undertaker to bring them back to life.
-        </p>
-
-        <div class="graveyard-grid" id="graveyard-grid">
-            <!-- Grave 1: AI GhostWriter -->
-            <div class="grave-card">
-                <div class="grave-card-header">
-                    <h3 class="grave-card-title">GhostWriter AI</h3>
-                    <div class="grave-card-meta">
-                        <span><i class="fas fa-robot"></i> GPT-4 Powered</span>
-                        <span><i class="fas fa-bolt"></i> Real-time Generation</span>
-                    </div>
-                </div>
-                <div class="grave-card-body">
-                    <p class="grave-card-description">
-                        AI content writer that learned from 10,000+ successful blogs. Could write better than humans but died from "too perfect" syndrome - clients didn't believe it wasn't plagiarized.
-                    </p>
-                    <div class="death-certificate">
-                        <h4><i class="fas fa-cross"></i> Cause of Death</h4>
-                        <p>Market skepticism - clients thought it was "too good to be human"</p>
-                    </div>
-                    <div class="grave-card-assets">
-                        <span class="asset-tag"><i class="fas fa-brain"></i> Trained AI Models</span>
-                        <span class="asset-tag"><i class="fas fa-code"></i> Python + FastAPI</span>
-                        <span class="asset-tag"><i class="fas fa-database"></i> Content Database</span>
-                    </div>
-                </div>
-                <div class="grave-card-footer">
-                    <div class="grave-price">$2,800</div>
-                    <button class="resurrect-button" data-grave="GhostWriter AI">Resurrect This Project</button>
-                </div>
-            </div>
-
-            <!-- Grave 2: Crypto Phoenix -->
-            <div class="grave-card">
-                <div class="grave-card-header">
-                    <h3 class="grave-card-title">Crypto Phoenix</h3>
-                    <div class="grave-card-meta">
-                        <span><i class="fas fa-coins"></i> Multi-Exchange</span>
-                        <span><i class="fas fa-chart-line"></i> Tax Automation</span>
-                    </div>
-                </div>
-                <div class="grave-card-body">
-                    <p class="grave-card-description">
-                        Automated crypto tax calculator that worked across 50+ exchanges. Born during the 2021 boom, died in the 2022 crypto winter. Perfect timing for the next bull run.
-                    </p>
-                    <div class="death-certificate">
-                        <h4><i class="fas fa-cross"></i> Cause of Death</h4>
-                        <p>Crypto winter - market timing was just unlucky</p>
-                    </div>
-                    <div class="grave-card-assets">
-                        <span class="asset-tag"><i class="fas fa-exchange-alt"></i> 50+ API Integrations</span>
-                        <span class="asset-tag"><i class="fas fa-code"></i> Node.js + React</span>
-                        <span class="asset-tag"><i class="fas fa-file-invoice"></i> Tax Templates</span>
-                    </div>
-                </div>
-                <div class="grave-card-footer">
-                    <div class="grave-price">$3,200</div>
-                    <button class="resurrect-button" data-grave="Crypto Phoenix">Resurrect This Project</button>
-                </div>
-            </div>
-
-            <!-- Grave 3: Viral Undertaker -->
-            <div class="grave-card">
-                <div class="grave-card-header">
-                    <h3 class="grave-card-title">Viral Undertaker</h3>
-                    <div class="grave-card-meta">
-                        <span><i class="fas fa-video"></i> Content Repurposing</span>
-                        <span><i class="fas fa-share-alt"></i> Multi-Platform</span>
-                    </div>
-                </div>
-                <div class="grave-card-body">
-                    <p class="grave-card-description">
-                        Turn one YouTube video into 20 social media posts automatically. Built by viral content creators who got tired of manual work. Died from founder burnout, not product failure.
-                    </p>
-                    <div class="death-certificate">
-                        <h4><i class="fas fa-cross"></i> Cause of Death</h4>
-                        <p>Founder burnout - creators got tired of running a business</p>
-                    </div>
-                    <div class="grave-card-assets">
-                        <span class="asset-tag"><i class="fab fa-youtube"></i> YouTube API</span>
-                        <span class="asset-tag"><i class="fas fa-code"></i> Python + FFmpeg</span>
-                        <span class="asset-tag"><i class="fas fa-cloud"></i> Cloud Processing</span>
-                    </div>
-                </div>
-                <div class="grave-card-footer">
-                    <div class="grave-price">$1,900</div>
-                    <button class="resurrect-button" data-grave="Viral Undertaker">Resurrect This Project</button>
-                </div>
-            </div>
-
-            <!-- Grave 4: Dating Ghost -->
-            <div class="grave-card">
-                <div class="grave-card-header">
-                    <h3 class="grave-card-title">Dating Ghost</h3>
-                    <div class="grave-card-meta">
-                        <span><i class="fas fa-heart"></i> AI Dating Coach</span>
-                        <span><i class="fas fa-comments"></i> Conversation AI</span>
-                    </div>
-                </div>
-                <div class="grave-card-body">
-                    <p class="grave-card-description">
-                        AI that analyzes dating app conversations and suggests perfect responses. Built by former Tinder data scientist who knew what actually works. Failed on marketing, not technology.
-                    </p>
-                    <div class="death-certificate">
-                        <h4><i class="fas fa-cross"></i> Cause of Death</h4>
-                        <p>Marketing failure - great product, terrible promotion</p>
-                    </div>
-                    <div class="grave-card-assets">
-                        <span class="asset-tag"><i class="fas fa-brain"></i> NLP Models</span>
-                        <span class="asset-tag"><i class="fas fa-code"></i> Python + TensorFlow</span>
-                        <span class="asset-tag"><i class="fas fa-database"></i> Conversation Data</span>
-                    </div>
-                </div>
-                <div class="grave-card-footer">
-                    <div class="grave-price">$2,500</div>
-                    <button class="resurrect-button" data-grave="Dating Ghost">Resurrect This Project</button>
-                </div>
-            </div>
-
-            <!-- Grave 5: Zombie Sales -->
-            <div class="grave-card">
-                <div class="grave-card-header">
-                    <h3 class="grave-card-title">Zombie Sales</h3>
-                    <div class="grave-card-meta">
-                        <span><i class="fas fa-mail-bulk"></i> Cold Email AI</span>
-                        <span><i class="fas fa-chart-bar"></i> Performance Tracking</span>
-                    </div>
-                </div>
-                <div class="grave-card-body">
-                    <p class="grave-card-description">
-                        AI that writes perfect cold emails for any industry. Learned from 1M+ successful campaigns. Killed by spam filters getting smarter, not by lack of effectiveness.
-                    </p>
-                    <div class="death-certificate">
-                        <h4><i class="fas fa-cross"></i> Cause of Death</h4>
-                        <p>External factors - spam filters evolved faster than expected</p>
-                    </div>
-                    <div class="grave-card-assets">
-                        <span class="asset-tag"><i class="fas fa-envelope"></i> Email Templates</span>
-                        <span class="asset-tag"><i class="fas fa-code"></i> Node.js + MongoDB</span>
-                        <span class="asset-tag"><i class="fas fa-analytics"></i> A/B Testing</span>
-                    </div>
-                </div>
-                <div class="grave-card-footer">
-                    <div class="grave-price">$1,700</div>
-                    <button class="resurrect-button" data-grave="Zombie Sales">Resurrect This Project</button>
-                </div>
-            </div>
-
-            <!-- Grave 6: Phantom Teams -->
-            <div class="grave-card">
-                <div class="grave-card-header">
-                    <h3 class="grave-card-title">Phantom Teams</h3>
-                    <div class="grave-card-meta">
-                        <span><i class="fas fa-users"></i> Remote Culture</span>
-                        <span><i class="fas fa-gamepad"></i> Team Building</span>
-                    </div>
-                </div>
-                <div class="grave-card-body">
-                    <p class="grave-card-description">
-                        Virtual office space with games and team building for remote teams. Ahead of its time in 2019, perfect for post-pandemic world. Died from premature market timing.
-                    </p>
-                    <div class="death-certificate">
-                        <h4><i class="fas fa-cross"></i> Cause of Death</h4>
-                        <p>Premature timing - market wasn't ready yet</p>
-                    </div>
-                    <div class="grave-card-assets">
-                        <span class="asset-tag"><i class="fas fa-video"></i> WebRTC Integration</span>
-                        <span class="asset-tag"><i class="fas fa-code"></i> React + Socket.io</span>
-                        <span class="asset-tag"><i class="fas fa-puzzle-piece"></i> Game Library</span>
-                    </div>
-                </div>
-                <div class="grave-card-footer">
-                    <div class="grave-price">$2,100</div>
-                    <button class="resurrect-button" data-grave="Phantom Teams">Resurrect This Project</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="email-capture" id="email-capture">
-            <h2 class="email-capture-title">Join the Resurrection Movement</h2>
-            <p style="margin-bottom: 1.5rem; color: var(--color-gray);">
-                Get early access to new graves and exclusive resurrection opportunities. Be the first to know when we unearth new projects.
-            </p>
-            
-            <form id="waitlist-form" action="https://formspree.io/f/mldkoebk" method="POST">
-                <input type="hidden" name="_subject" value="New SaaS Graveyard Waitlist Signup">
-                
-                <div class="form-group">
-                    <label class="form-label" for="email">Email Address</label>
-                    <input type="email" class="form-input" id="email" name="email" required placeholder="Enter your best email">
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">I'm primarily interested in:</label>
-                    <div class="role-selection">
-                        <div class="role-option tomb-raider-option selected" data-role="tomb-raider">
-                            <div class="role-option-icon tomb-raider-icon">
-                                <i class="fas fa-helmet-battle"></i>
-                            </div>
-                            <div>Buying SaaS Projects</div>
-                            <small>Tomb Raider</small>
-                        </div>
-                        <div class="role-option undertaker-option" data-role="undertaker">
-                            <div class="role-option-icon undertaker-icon">
-                                <i class="fas fa-coffin"></i>
-                            </div>
-                            <div>Selling My SaaS</div>
-                            <small>Undertaker</small>
-                        </div>
-                    </div>
-                    <input type="hidden" id="selected-role" name="role" value="tomb-raider">
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label" for="message">What type of graves interest you? (Optional)</label>
-                    <textarea class="form-input" id="message" name="message" placeholder="e.g., AI tools, marketing SaaS, developer tools, etc." rows="3"></textarea>
-                </div>
-                
-                <button type="submit" class="form-submit">Join Graveyard Watch</button>
-            </form>
-            
-            <div class="success-message" id="success-message">
-                <div class="success-icon">
-                    <i class="fas fa-check-circle"></i>
-                </div>
-                <h3>Welcome to The Graveyard!</h3>
-                <p>You've been added to our resurrection watchlist. We'll contact you when new opportunities arise from the digital depths.</p>
-            </div>
-        </div>
-
-        <div class="disclaimer">
-            <p>Every project in the graveyard has a story. We help write the next chapter.</p>
-        </div>
-    </div>
-
-    <footer>
+    <!-- Memory Types -->
+    <section class="memory-types">
         <div class="container">
-            <p>© 2025 The SaaS Graveyard. All rights reserved.</p>
-        </div>
-    </footer>
+            <h2 class="section-title">What Memory Would You Like to Preserve?</h2>
+            <p class="lead text-center">Choose the type of moment that matters most to you</p>
+            
+            <div class="memory-grid">
+                <div class="memory-card" data-memory="starry-night">
+                    <div class="memory-icon">🌌</div>
+                    <h3>The Stars That Witnessed</h3>
+                    <p>The exact star constellation from your special night</p>
+                    <div class="memory-examples">
+                        <p><small>Perfect for: Weddings, anniversaries, first meetings</small></p>
+                    </div>
+                </div>
 
-    <!-- Modal for resurrection inquiries -->
-    <div class="modal" id="resurrect-modal">
-        <div class="modal-content">
-            <button class="close-modal">&times;</button>
-            <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 1.5rem; color: white;">Resurrection Inquiry</h2>
-            <p style="margin-bottom: 1.5rem; color: var(--color-gray);">Interested in bringing this project back to life? Tell us about your resurrection plan.</p>
-            <form id="resurrect-form" action="https://formspree.io/f/mldkoebk" method="POST">
-                <input type="hidden" name="_subject" value="Resurrection Inquiry - %project%">
-                <input type="hidden" name="_replyto" id="resurrect-replyto" value="">
-                <input type="hidden" id="resurrect-project" name="project" value="">
+                <div class="memory-card" data-memory="meeting-map">
+                    <div class="memory-icon">🗺️</div>
+                    <h3>The Place Where Magic Happened</h3>
+                    <p>The location where your special moment took place</p>
+                    <div class="memory-examples">
+                        <p><small>Perfect for: Proposal spots, first dates, special venues</small></p>
+                    </div>
+                </div>
+
+                <div class="memory-card" data-memory="moon-phase">
+                    <div class="memory-icon">🌙</div>
+                    <h3>The Moon That Watched</h3>
+                    <p>The lunar phase from your special date</p>
+                    <div class="memory-examples">
+                        <p><small>Perfect for: Romantic nights, birthdays, milestones</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deliverables Showcase -->
+    <section class="deliverables-showcase" id="deliverables-showcase">
+        <div class="container">
+            <div class="showcase-header">
+                <h2 class="section-title" id="showcase-title">Choose How to Experience Your Memory</h2>
+                <p class="lead">Select from our available formats or get notified when new ones launch</p>
+            </div>
+
+            <div class="memory-preview">
+                <div class="preview-visual" id="memory-preview-icon">🌌</div>
+                <div>
+                    <h3 id="memory-preview-name">Starry Night Memory</h3>
+                    <p id="memory-preview-desc">The exact stars from your special moment</p>
+                </div>
+            </div>
+
+            <div class="deliverables-grid" id="deliverables-grid">
+                <!-- Deliverables will be populated by JavaScript -->
+            </div>
+
+            <div class="text-center">
+                <button class="back-btn" id="back-to-memories">← Choose Different Memory</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lead Capture Form -->
+    <section class="lead-capture" id="lead-form">
+        <div class="container">
+            <h3 class="text-center">Create Your <span id="selected-memory-name">Memory</span></h3>
+            <p class="text-center">Tell us about your special moment and we'll create your <span id="selected-deliverable-name">digital memory</span></p>
+            
+            <form id="memory-request-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+                <input type="hidden" name="memory_type" id="form-memory-type">
+                <input type="hidden" name="deliverable" id="form-deliverable">
                 
                 <div class="form-group">
-                    <label class="form-label" for="resurrect-email">Your Email</label>
-                    <input type="email" class="form-input" id="resurrect-email" name="email" required>
+                    <label for="email">Your Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="you@example.com">
                 </div>
+
                 <div class="form-group">
-                    <label class="form-label" for="resurrect-plan">Your Resurrection Plan</label>
-                    <textarea class="form-input" id="resurrect-plan" name="resurrection_plan" placeholder="How would you bring this project back to life? What's your vision?" rows="4" required></textarea>
+                    <label for="special_date">Date of Your Special Moment</label>
+                    <input type="date" id="special_date" name="special_date" required>
                 </div>
+
                 <div class="form-group">
-                    <label class="form-label" for="budget">Resurrection Budget</label>
-                    <select class="form-input" id="budget" name="budget" required>
-                        <option value="">Select budget range</option>
-                        <option value="Under $1,000">Under $1,000</option>
-                        <option value="$1,000 - $2,500">$1,000 - $2,500</option>
-                        <option value="$2,500 - $5,000">$2,500 - $5,000</option>
-                        <option value="$5,000+">$5,000+</option>
+                    <label for="location">Location (City, Country)</label>
+                    <input type="text" id="location" name="location" required placeholder="Paris, France">
+                </div>
+
+                <div class="form-group">
+                    <label for="story">Tell Us About This Moment</label>
+                    <textarea id="story" name="story" placeholder="What makes this moment so special? We'll use this to personalize your memory..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="budget">What's Your Budget?</label>
+                    <select id="budget" name="budget" required>
+                        <option value="">Select a range</option>
+                        <option value="25-49">$25 - $49</option>
+                        <option value="50-99">$50 - $99</option>
+                        <option value="100-199">$100 - $199</option>
+                        <option value="200+">$200+</option>
                     </select>
                 </div>
-                <button type="submit" class="form-submit">Submit Resurrection Request</button>
+
+                <button type="submit" class="btn btn-primary">Get Your Custom Quote</button>
+                <p class="text-center" style="margin-top: 1rem; font-size: 0.9rem; color: var(--color-mist);">
+                    We'll create a personalized proposal and send it within 24 hours
+                </p>
             </form>
+
+            <button class="back-btn" id="back-to-deliverables" style="width: 100%; margin-top: 1rem;">← Back to Format Selection</button>
         </div>
-    </div>
+    </section>
+
+    <!-- Examples Section -->
+    <section class="examples">
+        <div class="container">
+            <h2 class="section-title">See What's Possible</h2>
+            <p class="lead">Real examples of memories we've created</p>
+            
+            <div class="examples-grid">
+                <div class="example-card">
+                    <div class="example-image">🌌</div>
+                    <h3>Sarah & Mark's Wedding Night</h3>
+                    <p>"The stars from our wedding in Santorini - we look at it every night"</p>
+                    <a href="#" class="action-btn" style="width: auto; margin-top: 1rem; display: inline-block;">View Example</a>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-image">🗺️</div>
+                    <h3>First Date in Central Park</h3>
+                    <p>"Where we had our first date 5 years ago - brings back all the memories"</p>
+                    <a href="#" class="action-btn" style="width: auto; margin-top: 1rem; display: inline-block;">View Example</a>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-image">🌙</div>
+                    <h3>Proposal Under the Full Moon</h3>
+                    <p>"The exact moon phase when he proposed - so romantic to see it every month"</p>
+                    <a href="#" class="action-btn" style="width: auto; margin-top: 1rem; display: inline-block;">View Example</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <script>
-        // Role selection
-        const roleOptions = document.querySelectorAll('.role-option');
-        const selectedRoleInput = document.getElementById('selected-role');
-        
-        roleOptions.forEach(option => {
-            option.addEventListener('click', function() {
-                roleOptions.forEach(opt => opt.classList.remove('selected'));
-                this.classList.add('selected');
-                selectedRoleInput.value = this.getAttribute('data-role');
+        // Memory and Deliverable Data
+        const memoryData = {
+            'starry-night': {
+                name: 'Starry Night Memory',
+                description: 'The exact star constellation from your special night',
+                icon: '🌌',
+                previewClass: 'starry-preview',
+                deliverables: [
+                    {
+                        id: 'interactive-story',
+                        name: 'Interactive Web Story',
+                        description: 'Beautiful web page with your story, animations, and music',
+                        icon: '💫',
+                        status: 'available',
+                        action: 'Get Started'
+                    },
+                    {
+                        id: 'virtual-gift',
+                        name: 'Virtual Gift Experience',
+                        description: 'Send as a digital gift that recipients unwrap',
+                        icon: '🎁',
+                        status: 'available',
+                        action: 'Get Started'
+                    },
+                    {
+                        id: 'ar-filter',
+                        name: 'Instagram AR Filter',
+                        description: 'Point your camera to see your constellation in the sky',
+                        icon: '📱',
+                        status: 'coming-soon',
+                        action: 'Notify Me'
+                    },
+                    {
+                        id: 'phone-widget',
+                        name: 'Phone Widget',
+                        description: 'Live memory display on your homescreen',
+                        icon: '📱',
+                        status: 'coming-soon',
+                        action: 'Notify Me'
+                    },
+                    {
+                        id: 'smart-display',
+                        name: 'Smart Display App',
+                        description: 'For Google Home, Echo Show, and digital frames',
+                        icon: '🏠',
+                        status: 'coming-soon',
+                        action: 'Notify Me'
+                    },
+                    {
+                        id: 'sticker-pack',
+                        name: 'Messaging Sticker Pack',
+                        description: 'Animated stickers for WhatsApp and iMessage',
+                        icon: '💬',
+                        status: 'coming-soon',
+                        action: 'Notify Me'
+                    }
+                ]
+            },
+            'meeting-map': {
+                name: 'Meeting Map Memory',
+                description: 'The location where your special moment took place',
+                icon: '🗺️',
+                previewClass: 'map-preview',
+                deliverables: [
+                    {
+                        id: 'interactive-story',
+                        name: 'Interactive Web Story',
+                        description: 'Beautiful web page with animated map and your story',
+                        icon: '💫',
+                        status: 'available',
+                        action: 'Get Started'
+                    },
+                    {
+                        id: 'virtual-gift',
+                        name: 'Virtual Gift Experience',
+                        description: 'Send as a digital gift with map reveal',
+                        icon: '🎁',
+                        status: 'available',
+                        action: 'Get Started'
+                    },
+                    {
+                        id: 'ar-filter',
+                        name: 'Instagram AR Filter',
+                        description: 'Point your camera to see your location in AR',
+                        icon: '📱',
+                        status: 'coming-soon',
+                        action: 'Notify Me'
+                    },
+                    {
+                        id: 'printed-map',
+                        name: 'Printed Art Print',
+                        description: 'High-quality print of your special location',
+                        icon: '🖼️',
+                        status: 'coming-soon',
+                        action: 'Notify Me'
+                    }
+                ]
+            },
+            'moon-phase': {
+                name: 'Moon Phase Memory',
+                description: 'The lunar phase from your special date',
+                icon: '🌙',
+                previewClass: 'moon-preview',
+                deliverables: [
+                    {
+                        id: 'interactive-story',
+                        name: 'Interactive Web Story',
+                        description: 'Beautiful web page with moon animations',
+                        icon: '💫',
+                        status: 'available',
+                        action: 'Get Started'
+                    },
+                    {
+                        id: 'virtual-gift',
+                        name: 'Virtual Gift Experience',
+                        description: 'Send as a digital gift with moon reveal',
+                        icon: '🎁',
+                        status: 'available',
+                        action: 'Get Started'
+                    },
+                    {
+                        id: 'moon-tracker',
+                        name: 'Live Moon Tracker',
+                        description: 'Watch the moon phase change in real-time',
+                        icon: '🌕',
+                        status: 'coming-soon',
+                        action: 'Notify Me'
+                    }
+                ]
+            }
+        };
+
+        let selectedMemory = null;
+        let selectedDeliverable = null;
+
+        // Memory Selection
+        document.querySelectorAll('.memory-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const memoryType = this.getAttribute('data-memory');
+                selectedMemory = memoryType;
+                
+                showDeliverablesShowcase(memoryType);
             });
         });
-        
-        // Form submission - WAITLIST FORM (FIXED VERSION)
-        const waitlistForm = document.getElementById('waitlist-form');
-        const successMessage = document.getElementById('success-message');
-        
-        waitlistForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            console.log('🚀 Waitlist form submitted');
+
+        function showDeliverablesShowcase(memoryType) {
+            const memory = memoryData[memoryType];
             
-            // Get the email value for validation
-            const emailInput = this.querySelector('#email');
-            const email = emailInput.value;
+            // Update showcase header
+            document.getElementById('showcase-title').textContent = `How to Experience Your ${memory.name}`;
             
-            // Basic email validation
-            if (!email || !email.includes('@')) {
-                alert('Please enter a valid email address');
+            // Update memory preview
+            document.getElementById('memory-preview-icon').textContent = memory.icon;
+            document.getElementById('memory-preview-icon').className = `preview-visual ${memory.previewClass}`;
+            document.getElementById('memory-preview-name').textContent = memory.name;
+            document.getElementById('memory-preview-desc').textContent = memory.description;
+            
+            // Populate deliverables grid
+            const grid = document.getElementById('deliverables-grid');
+            grid.innerHTML = '';
+            
+            memory.deliverables.forEach(deliverable => {
+                const card = document.createElement('div');
+                card.className = `deliverable-card ${deliverable.status === 'available' ? 'available' : 'coming-soon'}`;
+                card.setAttribute('data-deliverable', deliverable.id);
+                
+                card.innerHTML = `
+                    <span class="status-badge status-${deliverable.status}">
+                        ${deliverable.status === 'available' ? 'Available Now' : 'Coming Soon'}
+                    </span>
+                    <div class="deliverable-icon">${deliverable.icon}</div>
+                    <h3 class="deliverable-title">${deliverable.name}</h3>
+                    <p class="deliverable-description">${deliverable.description}</p>
+                    <button class="action-btn ${deliverable.status === 'coming-soon' ? 'coming-soon' : ''}">
+                        ${deliverable.action}
+                    </button>
+                `;
+                
+                grid.appendChild(card);
+                
+                // Add click handler for available deliverables
+                if (deliverable.status === 'available') {
+                    card.addEventListener('click', function() {
+                        selectedDeliverable = deliverable;
+                        showLeadForm(memory, deliverable);
+                    });
+                } else {
+                    card.querySelector('.action-btn').addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        alert(`We'll notify you when ${deliverable.name} becomes available!`);
+                    });
+                }
+            });
+            
+            // Show showcase
+            document.getElementById('deliverables-showcase').classList.add('active');
+            document.getElementById('deliverables-showcase').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        function showLeadForm(memory, deliverable) {
+            // Update form headers
+            document.getElementById('selected-memory-name').textContent = memory.name;
+            document.getElementById('selected-deliverable-name').textContent = deliverable.name.toLowerCase();
+            
+            // Set hidden form values
+            document.getElementById('form-memory-type').value = selectedMemory;
+            document.getElementById('form-deliverable').value = deliverable.id;
+            
+            // Show form
+            document.getElementById('lead-form').classList.add('active');
+            document.getElementById('lead-form').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Back button handlers
+        document.getElementById('back-to-memories').addEventListener('click', function() {
+            document.getElementById('deliverables-showcase').classList.remove('active');
+            selectedMemory = null;
+        });
+
+        document.getElementById('back-to-deliverables').addEventListener('click', function() {
+            document.getElementById('lead-form').classList.remove('active');
+            selectedDeliverable = null;
+        });
+
+        // Form submission
+        document.getElementById('memory-request-form').addEventListener('submit', function(e) {
+            if (!selectedMemory || !selectedDeliverable) {
+                e.preventDefault();
+                alert('Please select a memory type and deliverable first');
                 return;
             }
             
-            // Show loading state
-            const submitBtn = this.querySelector('.form-submit');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Submitting...';
-            submitBtn.disabled = true;
-            
-            // Submit to Formspree
-            fetch(this.action, {
-                method: 'POST',
-                body: new FormData(this),
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(response => {
-                console.log('✅ Waitlist form submitted successfully');
-                console.log('Response status:', response.status);
-                
-                if (response.ok) {
-                    // Hide form and show success message
-                    waitlistForm.style.display = 'none';
-                    successMessage.style.display = 'block';
-                    
-                    // Update subscriber count
-                    const countElement = document.getElementById('subscriber-count');
-                    let currentCount = parseInt(countElement.textContent);
-                    countElement.textContent = currentCount + 1;
-                    
-                    // Reset form for potential re-use
-                    waitlistForm.reset();
-                    
-                    // Re-enable button (though form is hidden)
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                } else {
-                    throw new Error('Form submission failed');
-                }
-            })
-            .catch(error => {
-                console.error('❌ Waitlist form submission failed:', error);
-                alert('Form submission failed. Please try again or contact us directly.');
-                
-                // Reset button
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
+            console.log('Form submitted with:', {
+                memory: selectedMemory,
+                deliverable: selectedDeliverable.id
             });
         });
-        
-        // Resurrection button functionality
-        const resurrectButtons = document.querySelectorAll('.resurrect-button');
-        const resurrectModal = document.getElementById('resurrect-modal');
-        const closeModal = document.querySelector('.close-modal');
-        const resurrectProject = document.getElementById('resurrect-project');
-        const resurrectReplyTo = document.getElementById('resurrect-replyto');
-        
-        resurrectButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const projectName = this.getAttribute('data-grave');
-                resurrectProject.value = projectName;
-                
-                // Set Formspree subject with the project name
-                const subjectInput = resurrectModal.querySelector('input[name="_subject"]');
-                subjectInput.value = `Resurrection Inquiry: ${projectName}`;
-                
-                resurrectModal.style.display = 'flex';
+
+        // Example links
+        document.querySelectorAll('.example-card .action-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                alert("In the live version, this would open real examples of customer memories!");
             });
-        });
-        
-        closeModal.addEventListener('click', function() {
-            resurrectModal.style.display = 'none';
-        });
-        
-        // Close modal when clicking outside
-        window.addEventListener('click', function(e) {
-            if (e.target === resurrectModal) {
-                resurrectModal.style.display = 'none';
-            }
-        });
-        
-        // Form submission - RESURRECTION FORM  
-        const resurrectForm = document.getElementById('resurrect-form');
-        resurrectForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            console.log('🚀 Resurrection form submitted');
-            
-            // Update reply-to with the email from the form
-            const emailInput = this.querySelector('input[type="email"]');
-            resurrectReplyTo.value = emailInput.value;
-            
-            // Show loading state
-            const submitBtn = this.querySelector('.form-submit');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Submitting...';
-            submitBtn.disabled = true;
-            
-            // Submit to Formspree
-            fetch(this.action, {
-                method: 'POST',
-                body: new FormData(this),
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(response => {
-                console.log('✅ Resurrection form submitted successfully');
-                console.log('Response status:', response.status);
-                
-                alert('Resurrection request submitted! We\'ll contact you soon to discuss bringing this project back to life.');
-                resurrectModal.style.display = 'none';
-                this.reset();
-            })
-            .catch(error => {
-                console.error('❌ Resurrection form submission failed:', error);
-                alert('Form submission failed. Please try again.');
-                
-                // Reset button
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            });
-        });
-        
-        // Progressive project reveal animation
-        function revealProjects() {
-            const projects = document.querySelectorAll('.grave-card');
-            projects.forEach((project, index) => {
-                setTimeout(() => {
-                    project.classList.add('visible');
-                }, index * 200);
-            });
-        }
-        
-        // Role selection with kit integration
-        function selectRole(role) {
-            // Scroll to signup form
-            document.getElementById('email-capture').scrollIntoView({ behavior: 'smooth' });
-            
-            // Auto-select the role in the form
-            const roleOption = document.querySelector(`.role-option[data-role="${role}"]`);
-            if (roleOption) {
-                document.querySelectorAll('.role-option').forEach(opt => opt.classList.remove('selected'));
-                roleOption.classList.add('selected');
-                document.getElementById('selected-role').value = role;
-            }
-            
-            // Show contextual message based on role
-            const message = role === 'tomb-raider' 
-                ? "Ready to dig for treasure? We'll send your Tomb Raider Kit immediately after signup!"
-                : "Ready to give your project a proper send-off? We'll send your Undertaker Kit right away!";
-            
-            // Create a temporary notification
-            showNotification(message);
-        }
-        
-        function showNotification(message) {
-            // Remove existing notification if any
-            const existingNotification = document.querySelector('.role-notification');
-            if (existingNotification) {
-                existingNotification.remove();
-            }
-            
-            // Create new notification
-            const notification = document.createElement('div');
-            notification.className = 'role-notification';
-            notification.innerHTML = `
-                <div style="position: fixed; top: 20px; right: 20px; background: var(--color-success); color: white; padding: 1rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 1001; max-width: 300px;">
-                    <div style="display: flex; align-items: center; gap: 0.5rem;">
-                        <i class="fas fa-check-circle"></i>
-                        <span>${message}</span>
-                    </div>
-                </div>
-            `;
-            
-            document.body.appendChild(notification);
-            
-            // Auto-remove after 5 seconds
-            setTimeout(() => {
-                notification.remove();
-            }, 5000);
-        }
-        
-        // Cemetery map tombstone interactions
-        const tombstones = document.querySelectorAll('.tombstone');
-        tombstones.forEach(tombstone => {
-            tombstone.addEventListener('click', function() {
-                const projectName = this.getAttribute('data-project');
-                resurrectProject.value = projectName;
-                
-                // Set Formspree subject with the project name
-                const subjectInput = resurrectModal.querySelector('input[name="_subject"]');
-                subjectInput.value = `Resurrection Inquiry: ${projectName}`;
-                
-                resurrectModal.style.display = 'flex';
-            });
-        });
-        
-        // Initialize animations on page load
-        window.addEventListener('load', function() {
-            revealProjects();
-            
-            // Animate subscriber count
-            const countElement = document.getElementById('subscriber-count');
-            let targetCount = 47;
-            let currentCount = 0;
-            let increment = Math.ceil(targetCount / 20);
-            
-            const counter = setInterval(() => {
-                currentCount += increment;
-                if (currentCount >= targetCount) {
-                    currentCount = targetCount;
-                    clearInterval(counter);
-                }
-                countElement.textContent = currentCount;
-            }, 50);
         });
     </script>
 </body>
