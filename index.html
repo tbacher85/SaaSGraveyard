@@ -3,9 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-	<meta http-equiv="Pragma" content="no-cache">
-	<meta http-equiv="Expires" content="0">
     <title>SaaS Graveyard - Where Failed SaaS Rises Again</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -272,34 +269,34 @@
             color: var(--color-gray);
         }
         
-        /* Cemetery Map */
+        /* Cemetery Map - FIXED */
         .cemetery-map {
             position: relative;
             min-height: 600px;
             background: 
-                linear-gradient(rgba(26, 26, 46, 0.85), rgba(26, 26, 46, 0.9)),
-                /* Pixel art grass pattern */
+                /* Pixel grass pattern - more visible */
                 repeating-linear-gradient(
                     0deg,
-                    transparent,
-                    transparent 20px,
-                    rgba(30, 60, 30, 0.1) 20px,
-                    rgba(30, 60, 30, 0.1) 40px
+                    rgba(40, 80, 40, 0.3),
+                    rgba(40, 80, 40, 0.3) 2px,
+                    rgba(50, 90, 50, 0.3) 2px,
+                    rgba(50, 90, 50, 0.3) 4px
                 ),
                 repeating-linear-gradient(
                     90deg,
-                    transparent,
-                    transparent 20px,
-                    rgba(40, 70, 40, 0.1) 20px,
-                    rgba(40, 70, 40, 0.1) 40px
+                    rgba(30, 70, 30, 0.2),
+                    rgba(30, 70, 30, 0.2) 2px,
+                    rgba(40, 80, 40, 0.2) 2px,
+                    rgba(40, 80, 40, 0.2) 4px
                 ),
-                /* Base grass colors */
-                linear-gradient(135deg, #1a3a1a 0%, #2a5a2a 100%);
+                /* Base grass gradient - brighter */
+                linear-gradient(135deg, #2a5a2a 0%, #3a7a3a 100%);
             border-radius: 15px;
             margin: 3rem 0;
             padding: 2rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
         }
         
         .tombstone {
@@ -308,6 +305,7 @@
             transition: transform 0.3s;
             text-align: center;
             filter: drop-shadow(2px 2px 8px rgba(0,0,0,0.7));
+            z-index: 2;
         }
         
         .tombstone:hover {
@@ -338,6 +336,14 @@
         .tombstone.expensive {
             color: var(--color-accent);
         }
+        
+        /* Desktop Tombstone Positions - FIXED */
+        .tombstone:nth-child(1) { top: 15%; left: 10%; }
+        .tombstone:nth-child(2) { top: 65%; left: 75%; }
+        .tombstone:nth-child(3) { top: 35%; left: 80%; }
+        .tombstone:nth-child(4) { top: 75%; left: 25%; }
+        .tombstone:nth-child(5) { top: 25%; left: 45%; }
+        .tombstone:nth-child(6) { top: 55%; left: 35%; }
         
         /* Graveyard Grid */
         .graveyard-grid {
@@ -714,6 +720,7 @@
             z-index: -1;
         }
         
+        /* Mobile Optimizations */
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2.2rem;
@@ -740,9 +747,47 @@
                 gap: 0.5rem;
             }
             
+            /* Mobile Cemetery Map */
             .cemetery-map {
                 min-height: 400px;
+                padding: 1rem;
+                position: relative;
+                overflow: hidden;
             }
+            
+            /* Mobile tombstone positions */
+            .tombstone {
+                transform: scale(0.8);
+            }
+            
+            .tombstone:nth-child(1) { top: 10%; left: 5%; }
+            .tombstone:nth-child(2) { top: 70%; left: 80%; }
+            .tombstone:nth-child(3) { top: 30%; left: 85%; }
+            .tombstone:nth-child(4) { top: 80%; left: 15%; }
+            .tombstone:nth-child(5) { top: 20%; left: 40%; }
+            .tombstone:nth-child(6) { top: 60%; left: 30%; }
+            
+            .tombstone-label {
+                font-size: 0.7rem;
+                padding: 0.3rem 0.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .cemetery-map {
+                min-height: 350px;
+            }
+            
+            .tombstone {
+                transform: scale(0.7);
+            }
+            
+            .tombstone:nth-child(1) { top: 8%; left: 3%; }
+            .tombstone:nth-child(2) { top: 75%; left: 82%; }
+            .tombstone:nth-child(3) { top: 25%; left: 88%; }
+            .tombstone:nth-child(4) { top: 85%; left: 10%; }
+            .tombstone:nth-child(5) { top: 15%; left: 35%; }
+            .tombstone:nth-child(6) { top: 65%; left: 25%; }
         }
     </style>
 </head>
@@ -887,29 +932,29 @@
             Click on tombstones to explore resurrection-ready projects. Each grave holds a story waiting for its next chapter.
         </p>
 
-        <!-- Cemetery Map with Pixel Art Background -->
+        <!-- Cemetery Map with Fixed Background -->
         <div class="cemetery-map" id="cemetery-map">
-            <div class="tombstone cheap" style="top: 20%; left: 15%;" data-project="GhostWriter AI">
+            <div class="tombstone cheap" data-project="GhostWriter AI">
                 <div class="tombstone-icon">🪦</div>
                 <div class="tombstone-label">GhostWriter AI</div>
             </div>
-            <div class="tombstone mid" style="top: 60%; left: 70%;" data-project="Crypto Phoenix">
+            <div class="tombstone mid" data-project="Crypto Phoenix">
                 <div class="tombstone-icon">🪦</div>
                 <div class="tombstone-label">Crypto Phoenix</div>
             </div>
-            <div class="tombstone cheap" style="top: 40%; left: 80%;" data-project="Viral Undertaker">
+            <div class="tombstone cheap" data-project="Viral Undertaker">
                 <div class="tombstone-icon">🪦</div>
                 <div class="tombstone-label">Viral Undertaker</div>
             </div>
-            <div class="tombstone mid" style="top: 70%; left: 30%;" data-project="Dating Ghost">
+            <div class="tombstone mid" data-project="Dating Ghost">
                 <div class="tombstone-icon">🪦</div>
                 <div class="tombstone-label">Dating Ghost</div>
             </div>
-            <div class="tombstone cheap" style="top: 30%; left: 50%;" data-project="Zombie Sales">
+            <div class="tombstone cheap" data-project="Zombie Sales">
                 <div class="tombstone-icon">🪦</div>
                 <div class="tombstone-label">Zombie Sales</div>
             </div>
-            <div class="tombstone mid" style="top: 50%; left: 40%;" data-project="Phantom Teams">
+            <div class="tombstone mid" data-project="Phantom Teams">
                 <div class="tombstone-icon">🪦</div>
                 <div class="tombstone-label">Phantom Teams</div>
             </div>
